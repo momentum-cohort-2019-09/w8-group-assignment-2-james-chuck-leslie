@@ -7,6 +7,8 @@ verify_ssl = true
 
 [packages]
 django = "*"
+ipdb = "*"
+djangorestframework = "*"
 
 [requires]
 python_version = "3.7"
