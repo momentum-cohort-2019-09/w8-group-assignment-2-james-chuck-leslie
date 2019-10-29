@@ -17,7 +17,6 @@ class CodeSnippet(models.Model):
     language = models.CharField()
     user = models.ForeignKey(
         to=User,
-        on_delete=models.CASCADE,
         related_name='user')
     date_created = models.DateTimeField(default=timezone.now)
     date_updated = models.DateTimeField(default=timezone.now)
