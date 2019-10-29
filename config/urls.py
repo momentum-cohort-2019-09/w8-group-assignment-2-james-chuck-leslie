@@ -15,7 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from snipp_dogg import api
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/snipp_dogg/', api.CodeSnippetListCreate.as_view()
+    ),
+
 ]
