@@ -12,4 +12,3 @@ class UserListCreate(generics.ListCreateAPIView):
 class CodeSnippetListCreate(generics.ListCreateAPIView):
     queryset = CodeSnippet.objects.all()
     serializer_class = CodeSnippetSerializer
-    
