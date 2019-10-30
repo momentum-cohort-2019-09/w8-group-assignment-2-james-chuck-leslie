@@ -19,7 +19,7 @@ from snipp_dogg import api
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/snipp_dogg/', api.CodeSnippetListCreate.as_view()
-    ),
+    path('api/snipp_dogg/', api.CodeSnippetListCreate.as_view()),
+    path('api/snipp_dogg/user', api.UserListCreate.as_view()),
 
 ]
