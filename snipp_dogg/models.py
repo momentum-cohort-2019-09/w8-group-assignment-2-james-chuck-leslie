@@ -15,11 +15,11 @@ class User(AbstractUser):
 class CodeSnippet(models.Model):
     description = models.CharField(max_length=255)
     body = models.TextField()
-    language = models.CharField(max_length=255)
+    language = models.CharField(max_length=15)
     user = models.ForeignKey(
         to=User,
-        on_delete=models.SET_NULL,
         related_name='user',
+        on_delete=models.SET_NULL,
         null=True, blank=True)
     date_created = models.DateTimeField(default=timezone.now)
     date_updated = models.DateTimeField(default=timezone.now)
