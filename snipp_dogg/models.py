@@ -3,19 +3,14 @@ from django.utils import timezone
 from django.contrib.auth.models import AbstractUser
 
 class User(AbstractUser):
-    email = models.EmailField()
-    password = models.CharField(max_length=255)
     profile_description = models.TextField()
+    pinned_snippets = models.ManyToManyField(
+        to='CodeSnippet',
+        related_name='user_pinned',
+        blank=True)
 
     def __str__(self):
         return self.email
-
-class Language(models.Model):
-    name = models.CharField(max_length=255)
-    extension = models.CharField(max_length=8)
-
-    def __str__(self):
-        return f"{self.name} ({self.extension})"
 
 class CodeSnippet(models.Model):
     description = models.CharField(max_length=255)
