@@ -121,4 +121,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# Authentication
+
 AUTH_USER_MODEL = 'snipp_dogg.User'
+
+# Login
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'homepage'
