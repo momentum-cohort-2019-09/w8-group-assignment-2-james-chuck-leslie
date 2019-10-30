@@ -20,19 +20,16 @@ class Language(models.Model):
 class CodeSnippet(models.Model):
     description = models.CharField(max_length=255)
     body = models.TextField()
-    language = models.ForeignKey(
-        to=Language, 
-        on_delete=models.SET_NULL,
-        related_name='language',
-        null=True, blank=True)
+    language = models.CharField(max_length=255)
     user = models.ForeignKey(
-        to=User, 
-        on_delete=models.CASCADE,
-        related_name='user')
+        to=User,
+        on_delete=models.SET_NULL,
+        related_name='user',
+        null=True, blank=True)
     date_created = models.DateTimeField(default=timezone.now)
     date_updated = models.DateTimeField(default=timezone.now)
     source = models.ForeignKey(
-        'self', 
+        'self',
         on_delete=models.SET_NULL,
         null=True, blank=True,
         related_name='derivatives')

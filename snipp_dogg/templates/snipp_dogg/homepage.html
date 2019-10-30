@@ -1,0 +1,11 @@
+{% extends "snipp_dogg/base.html" %}
+{% block content %}
+<h1>PlaceHolder Homepage</h1>
+{% if user.is_authenticated %}
+    <p><a href='/snipp_dogg/profile'>Profile</a></p>
+    <p><a href='/snipp_dogg/logout'>Logout</a></p>
+{% else %}
+    <p><a href='/snipp_dogg/login'>Login</a></p>
+    <p><a href='/snipp_dogg/register'>Register</a></p>
+{% endif %}
+{% endblock content %}
