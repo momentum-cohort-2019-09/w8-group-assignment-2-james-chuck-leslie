@@ -23,12 +23,15 @@ urlpatterns = [
     path('', include('frontend.urls')),
     path('admin/', admin.site.urls),
     path('api/snipp_dogg/', api.CodeSnippetListCreate.as_view()),
-    path('api/snipp_dogg/user', api.UserListCreate.as_view()),
+    path('api/snipp_dogg/detail/<int:pk>/', api.DetailSnippet.as_view()),
+    path('api/snipp_dogg/user/', api.UserListCreate.as_view()),
     path('', snipp_views.homepage, name='homepage'),
     path('snipp_dogg/create', snipp_views.create_snipp, name='create'),
     path('snipp_dogg/edit', snipp_views.edit_snipp, name='edit'),
     path('snipp_dogg/profile', snipp_views.profile, name='profile'),
     path('snipp_dogg/register', snipp_views.register_user, name='register_user'),
     path('snipp_dogg/login', auth_views.LoginView.as_view(template_name='snipp_dogg/login.html'), name='login'),
-    path('snipp_dogg/logout', auth_views.LogoutView.as_view(template_name='snipp_dogg/logout.html'), name='logout')
+    path('snipp_dogg/logout', auth_views.LogoutView.as_view(template_name='snipp_dogg/logout.html'), name='logout'),
+    path('snipp_dogg/listing', snipp_views.snipp_list, name='snipp_list'),
+    path('snipp_dogg/display/<int:pk>', snipp_views.snipp_detail, name='snipp_detail')
 ]

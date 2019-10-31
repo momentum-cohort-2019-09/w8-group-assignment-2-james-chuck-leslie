@@ -17,6 +17,20 @@ def register_user(request):
         "form": form
     })
 
+def snipp_list(request):
+    snipps = CodeSnippet.objects.all()
+    return render(request, 'snipp_dogg/snipp_list.html', {
+        "snipps": snipps,
+    })
+
+
+def snipp_detail(request, pk):
+    snipp = CodeSnippet.objects.get(id=pk)
+    return render(request, 'snipp_dogg/snipp_detail.html', {
+        "snipp": snipp,
+    })
+
+
 def create_snipp(request):
     if request.method == 'POST':
         form = CreateSnippForm(request.POST)
