@@ -1,12 +1,22 @@
 {% extends "snipp_dogg/base.html" %}
 {% block content %}
-<h1>PlaceHolder Homepage</h1>
+
 {% if user.is_authenticated %}
-    <p><a href='/snipp_dogg/profile'>Profile</a></p>
-    <p><a href='/snipp_dogg/create'>Create Snipp</a></p>
-    <p><a href='/snipp_dogg/logout'>Logout</a></p>
+<div class="display">
+    {% for snipp in snipps %}
+    <div>
+        <a href="{% url 'snipp_detail' snipp.id %}">
+            {{ snipp.description }}
+        </a>   
+    </div>  
+    {% endfor %}
+</div>
+    <p><a href="{% url 'profile' %}">Profile</a></p>
+    <p><a href="{% url 'create' %}">Create Snipp</a></p>
+    <p><a href="{% url 'logout' %}">Logout</a></p>
 {% else %}
-    <p><a href='/snipp_dogg/login'>Login</a></p>
-    <p><a href='/snipp_dogg/register'>Register</a></p>
+    <p><a href="{% url 'login' %}">Login</a></p>
+    <p><a href="{% url 'register' %}">Register</a></p>
 {% endif %}
 {% endblock content %}
+
