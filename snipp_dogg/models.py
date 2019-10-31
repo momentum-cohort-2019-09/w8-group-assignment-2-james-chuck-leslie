@@ -13,6 +13,7 @@ class User(AbstractUser):
         return self.email
 
 class CodeSnippet(models.Model):
+    title = models.CharField(max_length=255, blank=True)
     description = models.CharField(max_length=255)
     body = models.TextField()
     language = models.CharField(max_length=15)

@@ -12,6 +12,7 @@ ipdb = "*"
 djangorestframework = "*"
 corsheaders = "*"
 django-cors-headers = "*"
+httpie = "*"
 
 [requires]
 python_version = "3.7"

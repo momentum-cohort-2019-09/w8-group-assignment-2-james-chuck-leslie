@@ -21,8 +21,10 @@ from snipp_dogg import views as snipp_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/snipp_dogg/', api.CodeSnippetListCreate.as_view()),
-    path('api/snipp_dogg/detail/<int:pk>/', api.DetailSnippet.as_view()),
+    path('api/snipp_dogg/snippets', snipp_views.SnippList.as_view()),
+    path('api/snipp_dogg/detail/<int:pk>', snipp_views.SnippDetail.as_view()),
+    path('api/snipp_dogg/snipps/<str:username>', snipp_views.SnippByUser.as_view()),
+    path('api/snipp_dogg/snipps/<str:username>/<str:language>', snipp_views.SnippByUserAndLanguage.as_view()),
     path('api/snipp_dogg/user/', api.UserListCreate.as_view()),
     path('', snipp_views.homepage, name='homepage'),
     path('snipp_dogg/create', snipp_views.create_snipp, name='create'),

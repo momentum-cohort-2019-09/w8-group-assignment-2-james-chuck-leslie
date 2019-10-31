@@ -17,6 +17,7 @@ class CreateSnippForm(forms.ModelForm):
     class Meta:
         model = CodeSnippet
         fields = [
+            'title',
             'language',
             'body',
             'description',
