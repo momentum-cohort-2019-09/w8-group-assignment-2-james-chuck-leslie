@@ -18,13 +18,8 @@ def register_user(request):
         "form": form
     })
 
-def snipp_list(request):
-    snipps = CodeSnippet.objects.all()
-    return render(request, 'snipp_dogg/snipp_list.html', {
-        "snipps": snipps,
-    })
 
-
+@login_required
 def snipp_detail(request, pk):
     snipp = CodeSnippet.objects.get(id=pk)
     return render(request, 'snipp_dogg/snipp_detail.html', {
@@ -70,7 +65,10 @@ def edit_snipp(request, pk):
     })
 
 def homepage(request):
-    return render(request, 'snipp_dogg/homepage.html')
+    snipps = CodeSnippet.objects.all()
+    return render(request, 'snipp_dogg/homepage.html', {
+        "snipps": snipps,
+    })
 
 @login_required
 def profile(request):
