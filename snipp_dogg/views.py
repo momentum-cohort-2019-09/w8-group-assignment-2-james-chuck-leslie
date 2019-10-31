@@ -61,6 +61,7 @@ def edit_snipp(request, pk):
             return redirect('profile')
     else:
         form = CreateSnippForm()
+        form.fields['title'].initial = og_snipp.title
         form.fields['language'].initial = og_snipp.language
         form.fields['body'].initial = og_snipp.body
         form.fields['description'].initial = og_snipp.description
