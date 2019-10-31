@@ -11,3 +11,4 @@ class UserSerializer(serializers.ModelSerializer):
        pinned_snippets = CodeSnippetSerializer(many=True, read_only=True)
        model = User
        fields = ['id', 'profile_description',]
+
