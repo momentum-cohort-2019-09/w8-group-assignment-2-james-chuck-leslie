@@ -69,10 +69,7 @@ def edit_snipp(request, pk):
     })
 
 def homepage(request):
-    snipps = CodeSnippet.objects.all()
-    return render(request, 'snipp_dogg/homepage.html', {
-        "snipps": snipps,
-    })
+    return render(request, 'snipp_dogg/homepage.html')
 
 @login_required
 def profile(request):

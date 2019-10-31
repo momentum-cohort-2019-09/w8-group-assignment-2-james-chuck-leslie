@@ -3,13 +3,7 @@
 
 {% if user.is_authenticated %}
 <div class="display">
-    {% for snipp in snipps %}
-    <div>
-        <a href="{% url 'snipp_detail' snipp.id %}">
-            {{ snipp.description }}
-        </a>   
-    </div>  
-    {% endfor %}
+    <h1> {{ user.username }}</h1>
 </div>
     <p><a href="{% url 'profile' %}">Profile</a></p>
     <p><a href="{% url 'create' %}">Create Snipp</a></p>
