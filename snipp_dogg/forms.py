@@ -16,6 +16,9 @@ class CreateSnippForm(forms.ModelForm):
 
     class Meta:
         model = CodeSnippet
+        widgets = {
+            'body': forms.Textarea(attrs={'autofocus': 'autofocus'})
+        }
         fields = [
             'title',
             'language',
