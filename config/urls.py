@@ -20,6 +20,7 @@ from django.contrib.auth import views as auth_views
 from snipp_dogg import views as snipp_views
 
 urlpatterns = [
+    path('', include('frontend.urls')),
     path('admin/', admin.site.urls),
     path('api/snipp_dogg/', api.CodeSnippetListCreate.as_view()),
     path('api/snipp_dogg/user', api.UserListCreate.as_view()),
