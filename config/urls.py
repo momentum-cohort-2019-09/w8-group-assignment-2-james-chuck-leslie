@@ -14,12 +14,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from snipp_dogg import api
 from django.contrib.auth import views as auth_views
 from snipp_dogg import views as snipp_views
 
 urlpatterns = [
+    path('', include('frontend.urls')),
     path('admin/', admin.site.urls),
     path('api/snipp_dogg/', api.CodeSnippetListCreate.as_view()),
     path('api/snipp_dogg/detail/<int:pk>/', api.DetailSnippet.as_view()),
