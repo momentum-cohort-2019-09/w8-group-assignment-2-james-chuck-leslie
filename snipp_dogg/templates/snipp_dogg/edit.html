@@ -1,0 +1,11 @@
+{% extends "snipp_dogg/base.html" %}
+{% block content%}
+    <div>
+        <form method='POST'>
+            {% csrf_token %}
+            <legend> Edit Snipp </legend>
+            {{form.as_p}}
+            <button type='submit'> Edit </button>
+        </form>
+    </div>
+{% endblock content %}

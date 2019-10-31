@@ -1,4 +1,14 @@
 {% extends "snipp_dogg/base.html" %}
 {% block content %}
     <h1> {{ user.username }} </h1>
+    {% for snipp in snippets %}
+        <div class=snipp>
+            <p>Body: {{snipp.body}}</p>
+            <ul>
+                <li>Language: {{snipp.language}}</li>
+                <li>Description: {{snipp.description}}</li>
+            </ul>
+            <a href='/snipp_dogg/edit/{{snipp.id}}'>Edit</a>
+        </div>
+    {% endfor %}
 {% endblock content %}

@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.utils import timezone
 from snipp_dogg.models import CodeSnippet
 from snipp_dogg.forms import SnippDogdUserCreationForm, CreateSnippForm
 
@@ -30,7 +31,7 @@ def snipp_detail(request, pk):
         "snipp": snipp,
     })
 
-
+@login_required
 def create_snipp(request):
     if request.method == 'POST':
         form = CreateSnippForm(request.POST)
@@ -46,6 +47,7 @@ def create_snipp(request):
         "form": form
     })
 
+@login_required
 def edit_snipp(request, pk):
     og_snipp = get_object_or_404(CodeSnippet, id=pk)
     if request.method == 'POST':
@@ -54,12 +56,16 @@ def edit_snipp(request, pk):
             snipp = form.save(commit=False)
             snipp.source = og_snipp
             snipp.user = request.user
+            snipp.date_updated = timezone.now()
             snipp.save()
             messages.success(request, f'Your Snipp has Been Edited!')
-            return redirect('homepage')
+            return redirect('profile')
     else:
         form = CreateSnippForm()
-    return render(request, "snipp_dogg/create.html",{
+        form.fields['language'].initial = og_snipp.language
+        form.fields['body'].initial = og_snipp.body
+        form.fields['description'].initial = og_snipp.description
+    return render(request, "snipp_dogg/edit.html",{
         "form": form
     })
 
@@ -68,4 +74,7 @@ def homepage(request):
 
 @login_required
 def profile(request):
-    return render(request, "snipp_dogg/profile.html")
+    user_snipps = CodeSnippet.objects.filter(user=request.user)
+    return render(request, "snipp_dogg/profile.html", {
+        'snippets': user_snipps
+    })
