@@ -130,3 +130,5 @@ AUTH_USER_MODEL = 'snipp_dogg.User'
 # Login
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'homepage'
+
+SOCIAL_AUTH_URL_NAMESPACE = 'social'

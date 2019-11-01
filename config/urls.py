@@ -35,5 +35,6 @@ urlpatterns = [
     path('snipp_dogg/register', snipp_views.register_user, name='register_user'),
     path('snipp_dogg/login', auth_views.LoginView.as_view(template_name='snipp_dogg/login.html'), name='login'),
     path('snipp_dogg/logout', auth_views.LogoutView.as_view(template_name='snipp_dogg/logout.html'), name='logout'),
-    path('snipp_dogg/display/<int:pk>', snipp_views.snipp_detail, name='snipp_detail')
+    path('snipp_dogg/display/<int:pk>', snipp_views.snipp_detail, name='snipp_detail'),
+    url('snipp_dogg/login', include('social_django.urls', namespace='social')),
 ]
