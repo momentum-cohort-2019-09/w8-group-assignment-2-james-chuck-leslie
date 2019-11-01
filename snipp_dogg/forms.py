@@ -18,7 +18,7 @@ class CreateSnippForm(forms.ModelForm):
         model = CodeSnippet
         widgets = {
             'description': forms.Textarea(),
-            'body': forms.Textarea(attrs={'autofocus': 'autofocus'}),
+            'body': forms.Textarea(attrs={'autofocus': 'autofocus', 'id': 'codebox'}),
         }
         fields = [
             'title',
