@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'snipp_dogg',
     'rest_framework',
-    'social-django',
+    'social_django',
     
 ]
 
