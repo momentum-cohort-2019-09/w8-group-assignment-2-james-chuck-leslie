@@ -2,7 +2,7 @@
 {% block content %}
 <div class=snipp>
     <h3>Title: {{snipp.title}}</h3>
-    <p>Body: {{snipp.body}}</p>
+    <pre><code class="language-{{snipp.language}}">{{snipp.body}}</code></pre>
     <ul>
         <li>Language: {{snipp.language}}</li>
         <li>Description: {{snipp.description}}</li>
