@@ -1,14 +1,12 @@
 {% extends "snipp_dogg/base.html" %}
 {% block content %}
-<div class=container>
-    {{ snipp.description }}
-    {{ snipp.body }}
-    {{ snipp.language }}
-    {{ snipp.user }}
-    {{ snipp.source }}
+<div class=snipp>
+    <h3>Title: {{snipp.title}}</h3>
+    <p>Body: {{snipp.body}}</p>
+    <ul>
+        <li>Language: {{snipp.language}}</li>
+        <li>Description: {{snipp.description}}</li>
+    </ul>
 </div>
-<button>
-    <a href="">Edit</a>
-</button>
-
+<a href="/snipp_dogg/edit/{{snipp.id}}"><button>Edit</button></a>
 {% endblock content %}

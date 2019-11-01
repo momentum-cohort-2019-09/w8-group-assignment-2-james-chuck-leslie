@@ -14,11 +14,12 @@
                 <li>Language: {{snipp.language}}</li>
                 <li>Description: {{snipp.description}}</li>
             </ul>
-            <a href='/snipp_dogg/edit/{{snipp.id}}'>Edit</a>
-            <a href='/snipp_dogg/delete/{{snipp.id}}'>Delete</a>
+            <a href='/snipp_dogg/edit/{{snipp.id}}'><button>Edit</button></a>
+            <a href='/snipp_dogg/delete/{{snipp.id}}'><button>Delete</button></a>
+            <a href='/snipp_dogg/display/{{snipp.id}}'><button>View Snipp</button></a>
         </div>
     {% endfor %}
     {% if searched %}
-    <a href='/snipp_dogg/profile'>Get all Snipps Back</a>
+    <a href='/snipp_dogg/profile'><button>Get all Snipps Back</button></a>
     {% endif %}
 {% endblock content %}
