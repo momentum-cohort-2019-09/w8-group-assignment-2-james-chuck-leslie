@@ -10,9 +10,9 @@ pylint = "*"
 django = "*"
 ipdb = "*"
 djangorestframework = "*"
-corsheaders = "*"
 django-cors-headers = "*"
 httpie = "*"
+social-auth-app-django = "*"
 
 [requires]
 python_version = "3.7"
