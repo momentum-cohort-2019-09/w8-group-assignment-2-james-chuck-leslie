@@ -1,0 +1,20 @@
+{% extends "snipp_dogg/base.html" %}
+{% block content%}
+    <div>
+        <div class=snipp>
+            <h3>Title: {{snipp.title}}</h3>
+            <p>Body: {{snipp.body}}</p>
+            <ul>
+                <li>Language: {{snipp.language}}</li>
+                <li>Description: {{snipp.description}}</li>
+            </ul>
+            <div>
+                Are you sure you want to Delete?
+            </div>
+        <form method='POST'>
+            {% csrf_token %}
+            <button type='submit'> Delete</button>
+        </form>
+        <a href="{% url 'profile' %}"> Go Back </a>
+    </div>
+{% endblock content %}

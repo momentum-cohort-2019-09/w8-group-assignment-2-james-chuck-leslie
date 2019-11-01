@@ -122,6 +122,16 @@ def profile(request):
             'form': form
         })
 
+def delete_snipp(request, pk):
+    snipp = get_object_or_404(CodeSnippet, id=pk)
+    if request.method == "POST":
+        snipp.delete()
+        return redirect('profile')
+    else:
+        return render(request, 'snipp_dogg/delete.html', {
+            "snipp": snipp,
+        })
+
 # API Views
 
 class SnippList(APIView):
