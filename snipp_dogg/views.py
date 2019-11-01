@@ -56,9 +56,9 @@ def edit_snipp(request, pk):
         if form.is_valid():
             snipp = form.save(commit=False)
             snipp.date_updated = timezone.now()
-            snipp.source = og_snipp
             snipp.user = request.user
             snipp.save()
+            og_snipp.delete()
             messages.success(request, f'Your Snipp has Been Edited!')
             return redirect('profile')
     else:

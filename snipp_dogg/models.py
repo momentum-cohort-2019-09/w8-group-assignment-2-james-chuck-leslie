@@ -24,11 +24,6 @@ class CodeSnippet(models.Model):
         null=True, blank=True)
     date_created = models.DateTimeField(default=timezone.now)
     date_updated = models.DateTimeField(default=timezone.now)
-    source = models.ForeignKey(
-        'self',
-        on_delete=models.SET_NULL,
-        null=True, blank=True,
-        related_name='derivatives')
 
     def __str__(self):
         return self.description
