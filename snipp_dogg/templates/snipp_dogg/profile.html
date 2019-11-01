@@ -17,4 +17,7 @@
             <a href='/snipp_dogg/edit/{{snipp.id}}'>Edit</a>
         </div>
     {% endfor %}
+    {% if searched %}
+    <a href='/snipp_dogg/profile'>Get all Snipps Back</a>
+    {% endif %}
 {% endblock content %}

@@ -8,7 +8,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from snipp_dogg.serializers import CodeSnippetSerializer, UserSerializer
 from snipp_dogg.models import CodeSnippet, User
-from snipp_dogg.forms import SnippDogdUserCreationForm, CreateSnippForm
+from snipp_dogg.forms import SnippDogdUserCreationForm, CreateSnippForm, SearchForm
 
 def register_user(request):
     if request.method == 'POST':
@@ -74,10 +74,49 @@ def homepage(request):
 
 @login_required
 def profile(request):
-    user_snipps = CodeSnippet.objects.filter(user=request.user)
-    return render(request, "snipp_dogg/profile.html", {
-        'snippets': user_snipps
-    })
+    if request.method == "POST":
+        form = SearchForm(request.POST)
+        if form.is_valid():
+            data = request.POST.copy()
+            if data.get('search_choice') == 'language':
+                user_snipps = CodeSnippet.objects.filter(user=request.user, language=data.get('search_text'))
+                form = SearchForm()
+                return render(request, "snipp_dogg/profile.html", {
+                    'snippets': user_snipps,
+                    'form': form,
+                    'searched': True
+                })
+            elif data.get('search_choice') == 'title':
+                selected_snipps = []
+                all_user_snipps = CodeSnippet.objects.filter(user=request.user)
+                for snipp in all_user_snipps:
+                    if data.get('search_text') in snipp.title:
+                        selected_snipps.append(snipp)
+                form = SearchForm()
+                return render(request, "snipp_dogg/profile.html", {
+                    'snippets': selected_snipps,
+                    'form': form,
+                    'searched': True
+                })
+            elif data.get('search_choice') == 'description':
+                selected_snipps = []
+                all_user_snipps = CodeSnippet.objects.filter(user=request.user)
+                for snipp in all_user_snipps:
+                    if data.get('search_text') in snipp.description:
+                        selected_snipps.append(snipp)
+                form = SearchForm()
+                return render(request, "snipp_dogg/profile.html", {
+                    'snippets': selected_snipps,
+                    'form': form,
+                    'searched': True
+                })
+    else:
+        user_snipps = CodeSnippet.objects.filter(user=request.user)
+        form = SearchForm()
+        return render(request, "snipp_dogg/profile.html", {
+            'snippets': user_snipps,
+            'form': form
+        })
 
 # API Views
 
