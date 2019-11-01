@@ -16,7 +16,15 @@ class CodeSnippet(models.Model):
     title = models.CharField(max_length=255, blank=True)
     description = models.CharField(max_length=255)
     body = models.TextField()
-    language = models.CharField(max_length=15)
+    CHOICES = [ ('markup', 'markup'),
+                    ('css', 'css'),
+                    ('clike', 'clike'),
+                    ('javascript', 'javascript'),
+                    ('java', 'java'),
+                    ('json', 'json'),
+                    ('scss', 'scss'),
+                    ('python', 'python')]
+    language = models.CharField(max_length=15, choices=CHOICES)
     user = models.ForeignKey(
         to=User,
         related_name='user',

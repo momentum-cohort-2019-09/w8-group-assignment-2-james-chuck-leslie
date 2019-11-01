@@ -26,8 +26,10 @@ urlpatterns = [
     path('api/snipp_dogg/snipps/<str:username>', snipp_views.SnippByUser.as_view()),
     path('api/snipp_dogg/snipps/<str:username>/<str:language>', snipp_views.SnippByUserAndLanguage.as_view()),
     path('api/snipp_dogg/user/', api.UserListCreate.as_view()),
+
     path('', snipp_views.homepage, name='homepage'),
     path('snipp_dogg/create', snipp_views.create_snipp, name='create'),
+    path('snipp_dogg/delete/<int:pk>', snipp_views.delete_snipp, name='delete'),
     path('snipp_dogg/edit/<int:pk>', snipp_views.edit_snipp, name='edit'),
     path('snipp_dogg/profile', snipp_views.profile, name='profile'),
     path('snipp_dogg/register', snipp_views.register_user, name='register_user'),
