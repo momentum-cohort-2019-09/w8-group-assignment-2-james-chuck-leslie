@@ -1,3 +1,4 @@
+import re as re
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -57,6 +58,7 @@ def edit_snipp(request, pk):
             snipp.date_updated = timezone.now()
             snipp.source = og_snipp
             snipp.user = request.user
+            snipp.save()
             messages.success(request, f'Your Snipp has Been Edited!')
             return redirect('profile')
     else:
@@ -89,8 +91,9 @@ def profile(request):
             elif data.get('search_choice') == 'title':
                 selected_snipps = []
                 all_user_snipps = CodeSnippet.objects.filter(user=request.user)
+                title_regex = r"" + re.escape(data.get('search_text'))
                 for snipp in all_user_snipps:
-                    if data.get('search_text') in snipp.title:
+                    if re.search(title_regex, snipp.title, re.IGNORECASE):
                         selected_snipps.append(snipp)
                 form = SearchForm()
                 return render(request, "snipp_dogg/profile.html", {
@@ -101,8 +104,9 @@ def profile(request):
             elif data.get('search_choice') == 'description':
                 selected_snipps = []
                 all_user_snipps = CodeSnippet.objects.filter(user=request.user)
+                descrip_regex = r"" + re.escape(data.get('search_text'))
                 for snipp in all_user_snipps:
-                    if data.get('search_text') in snipp.description:
+                    if re.search(descrip_regex, snipp.description, re.IGNORECASE):
                         selected_snipps.append(snipp)
                 form = SearchForm()
                 return render(request, "snipp_dogg/profile.html", {
