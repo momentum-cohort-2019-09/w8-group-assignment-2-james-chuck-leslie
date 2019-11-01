@@ -13,6 +13,7 @@ djangorestframework = "*"
 django-cors-headers = "*"
 httpie = "*"
 social-auth-app-django = "*"
+social-django = "*"
 
 [requires]
 python_version = "3.7"
