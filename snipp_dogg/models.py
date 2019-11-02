@@ -20,8 +20,6 @@ class CodeSnippet(models.Model):
                     ('css', 'css'),
                     ('clike', 'clike'),
                     ('javascript', 'javascript'),
-                    ('java', 'java'),
-                    ('json', 'json'),
                     ('scss', 'scss'),
                     ('python', 'python')]
     language = models.CharField(max_length=15, choices=CHOICES)

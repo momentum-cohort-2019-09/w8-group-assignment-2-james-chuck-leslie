@@ -26,7 +26,6 @@ urlpatterns = [
     path('api/snipp_dogg/snipps/<str:username>', snipp_views.SnippByUser.as_view()),
     path('api/snipp_dogg/snipps/<str:username>/<str:language>', snipp_views.SnippByUserAndLanguage.as_view()),
     path('api/snipp_dogg/user/', api.UserListCreate.as_view()),
-
     path('', snipp_views.homepage, name='homepage'),
     path('snipp_dogg/create', snipp_views.create_snipp, name='create'),
     path('snipp_dogg/delete/<int:pk>', snipp_views.delete_snipp, name='delete'),
