@@ -1,16 +1,12 @@
 import './prism.css';
 import './prism.js';
 import './index.scss';
+// import { CodeMirror } from 'codemirror';
 
-const codebox = document.getElementById('codebox')
+// const CodeMirror = require('codemirror');
 
-codebox.addEventListener("keydown", (e) => {
-    let { keyCode } = e;
-    let { value, selectionStart, selectionEnd } = codebox;
+// const codebox = document.getElementById('codebox');
 
-    if (keyCode === 9) {  // TAB = 9
-      e.preventDefault();
-      codebox.value = value.slice(0, selectionStart) + "    " + value.slice(selectionEnd);
-      codebox.setSelectionRange(selectionStart+4, selectionStart+4)
-    }
-});
+// var myCodeMirror = CodeMirror.fromTextArea(codebox, {
+// 	theme : 'tomorrow-night-eighties'
+// });
