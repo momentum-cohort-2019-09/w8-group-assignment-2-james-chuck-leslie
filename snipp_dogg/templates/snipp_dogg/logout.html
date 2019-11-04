@@ -1,9 +1,8 @@
 {% extends "snipp_dogg/base.html" %}
 {% block content%}
-    <h2> You Have Logged Out!</h2>
-    <div>
-        <small>
-            <a href='/snipp_dogg/login'>Login Again</a>
-        </small>
+    <h2 class="logout-msg"> You Have Logged Out</h2>
+    <div class="log-reg-container">
+            <a href="{% url 'login' %}">Login</a>
+            <a class="reg-link" href="{% url 'register_user' %}">Register</a>
     </div>
 {% endblock content %}

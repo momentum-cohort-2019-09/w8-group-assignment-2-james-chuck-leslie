@@ -9,16 +9,28 @@
     <link rel="stylesheet" href="{% static 'dist/index.css' %}">
     <title>Snipp Dogg</title>
 </head>
-<h1><a class="header" href="/">Snipp Dogg</a></h1>
+
 <body>
-    {% if messages %}
+    <div id="sidebar">
+        <a class="home-link" href="/">Snipp Dogg</a>
+        {% block links %}
+        {% endblock links %}
+    </div>
+        
+    <div class="left-container">
+        {% if messages %}
         {% for message in messages %}
-            <div>
+            <div class="message">
                 {{ message }}
             </div>
         {% endfor %}
-    {% endif %}
-    {% block content%}
-    {% endblock content%}
+        {% endif %}
+        <div class="content">
+            <img class="icon" src="{% static 'boneIcon.png' %}" alt="bone icon" height="100" width="117">
+
+            {% block content%}
+            {% endblock content%}
+        </div>
+    </div>
 </body>
 </html>

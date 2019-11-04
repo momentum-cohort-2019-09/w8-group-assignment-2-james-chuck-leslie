@@ -1,18 +1,19 @@
 {% extends "snipp_dogg/base.html" %}
 {% block content%}
-    <div>
-        <form method='POST'>
+    <div class="login-form-container">
+        <form class="form" method='POST'>
             {% csrf_token %}
             {% if not messages %}
                 <legend> Login! </legend>
             {% endif %}
             {{form.as_p}}
-            <button type='submit'> Sign In </button>
+            <button class="sign-in-button" type='submit'> Sign In </button>
         </form>
-    </div>
-    <div>
-        <small>
-            Need an account? <a href='/snipp_dogg/register'>Sign Up</a>
-        </small>
+        <div class="reg-q-container">
+            <p class="register-question">
+                Need an account?
+            </p>
+            <button class="register-button" href='/snipp_dogg/register'>Register</button>
+        </div>
     </div>
 {% endblock content %}

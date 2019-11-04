@@ -1,5 +1,488 @@
+$light-background: rgb(45, 45, 45);
+$dark-background: rgb(37, 37, 38);
+$highlight-background: rgb(55, 55, 61);
+$text-yellow: rgb(255, 204, 102);
+$text-red: rgb(242, 119, 122);
+$text-orange: rgb(249, 145, 87);
+$text-green: rgb(153, 204, 153);
+$text-blue: rgb(102, 153, 204);
+$text-purple: rgb(204, 153, 204);
+$text-gray: rgb(204, 204, 204);
+
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+}
+
+body {
+	display: flex;
+	flex-direction: row;
+	background-color: $light-background;
+	font-family: Menlo, Monaco, 'Courier New', monospace;
+}
+
+.icon {
+	margin: 1vh;
+	float: right;
+}
+
+a {
+	text-decoration: none;
+}
+
+#sidebar {
+	position: fixed;
+	font-size: 2vw;
+	background-color: $dark-background;
+	height: 100vh;
+	width: 25vw;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	text-align: center;
+}
+
+#sidebar a {
+	width: 95%;
+	margin: 0;
+	padding: 2vw;
+	color: $text-yellow;
+	font-size: 2vw;
+}
+
+#sidebar a:hover {
+	background-color: $highlight-background;
+	// font-weight: bold;
+	color: $text-purple;
+	transform: scaleX(1.1);
+	transition: transform 0.5s ease;
+}
+
+.message {
+	color: $text-yellow;
+	width: 100%;
+	text-align: center;
+	font-size: 2vw;
+	margin-top: 1vh;
+}
+
+.log-reg-container {
+	background-color: $light-background;
+	font-size: 5vw;
+	text-align: center;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	margin: 0;
+	padding: 0;
+}
+
+.log-reg-container a {
+	color: $text-yellow;
+	line-height: 12vh;
+	padding-left: 3vw;
+	padding-right: 3vw;
+}
+
+.log-reg-container a:hover {
+	font-size: 5.2vw;
+	color: $text-orange;
+}
+
+.left-container {
+	position: relative;
+	height: 100vh;
+	width: 75vw;
+	margin-left: 25vw;
+}
+
+// Login Form Styles
+
+.login-form-container {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	margin: 0;
+	padding: 0;
+}
+
+.login-form-container {
+	width: 50%;
+}
+
+.form {
+	width: 100%;
+}
+
+.form p {
+	font-size: 3vh;
+}
+
+.form input {
+	background-color: $light-background;
+	color: $text-purple;
+	width: 100%;
+	height: 100%;
+	font-size: 26px;
+	border: none;
+	border-bottom: 2px solid $text-yellow;
+	outline: none;
+}
+
+.form label {
+	margin-top: 3vh;
+	color: $text-yellow;
+}
+
+.sign-in-button {
+	width: 70%;
+	color: $text-blue;
+	font-size: 3vh;
+	line-height: 5vh;
+	background-color: $light-background;
+	margin-top: 5vh;
+	margin-left: 15%;
+	margin-right: 15%;
+	border-color: $text-blue;
+	border-radius: 50%;
+	text-decoration: none;
+	text-align: center;
+	outline: none;
+}
+
+.errorlist li {
+	text-align: center;
+	font-size: 2vh;
+	list-style: none;
+	color: $text-red;
+}
+
+.sign-in-button:hover {
+	background-color: $text-blue;
+	color: $dark-background;
+	cursor: pointer;
+}
+
+legend {
+	color: $text-blue;
+	text-align: center;
+	font-size: 5vh;
+	padding-bottom: 7vh;
+}
+
+.reg-q-container {
+	text-align: center;
+}
+
+.register-question {
+	color: $text-orange;
+	margin-top: 5vh;
+	font-size: 5vh;
+}
+
+.register-button {
+	width: 70%;
+	color: $text-blue;
+	font-size: 3vh;
+	line-height: 5vh;
+	background-color: $light-background;
+	margin-top: 5vh;
+	margin-left: 15%;
+	margin-right: 15%;
+	border-color: $text-blue;
+	border-radius: 50%;
+	text-decoration: none;
+	text-align: center;
+	outline: none;
+}
+
+.register-button:hover {
+	background-color: $text-blue;
+	color: $dark-background;
+	cursor: pointer;
+}
+
+.username-container {
+	width: 100%;
+	text-align: center;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	margin: 0;
+	padding: 0;
+}
+
+.username {
+	text-align: center;
+	padding-bottom: 5vh;
+	font-size: 8vh;
+	color: $text-green;
+}
+
+.search-form {
+	padding: 2vh;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.search-form label {
+	color: $text-blue;
+	font-size: 2.5vh;
+}
+
+#search-choice {
+	padding: 0.5vh;
+	color: $text-purple;
+	background-color: $highlight-background;
+	outline: none;
+	font-size: 2vh;
+	border-color: $text-purple;
+}
+
+#search-field {
+	padding: 0.5vh;
+	border: 2px solid $text-purple;
+	color: $text-purple;
+	background-color: $highlight-background;
+	outline: none;
+	font-size: 2.5vh;
+}
+
+.search-button {
+	width: 9vw;
+	color: $text-purple;
+	border-color: $text-purple;
+	border-radius: 50%;
+	text-decoration: none;
+	text-align: center;
+	outline: none;
+	font-size: 2vh;
+	line-height: 5vh;
+	background-color: $light-background;
+}
+
+.search-button:hover {
+	background-color: $text-purple;
+	color: $dark-background;
+	font-weight: bold;
+	cursor: pointer;
+	transition: all 0.5s ease;
+}
+
+.snipp-container {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+}
+
+.snipp {
+	display: block;
+	margin: 1vw;
+	// max-height: 60vh;
+}
+
+.snipp h3 {
+	color: $text-orange;
+	margin-top: 3vh;
+	margin-bottom: 3vh;
+}
+
+.code-toolbar {
+	outline: 2px solid $text-gray;
+}
+
+.snipp ul {
+	margin-top: 3vh;
+	margin-bottom: 3vh;
+}
+
+.lingo,
+.desc {
+	list-style: none;
+	color: $text-gray;
+}
+
+.button-container {
+	margin-top: 2vh;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+.view-button {
+	color: $text-blue;
+	border-color: $text-blue;
+	background-color: $light-background;
+	width: 8vw;
+	border-radius: 50%;
+	text-decoration: none;
+	text-align: center;
+	outline: none;
+	font-size: 2vh;
+	line-height: 4vh;
+}
+
+.view-button:hover {
+	background-color: $text-blue;
+	color: $dark-background;
+	cursor: pointer;
+	transition: all 0.5s ease;
+}
+
+.edit-button {
+	color: $text-green;
+	border-color: $text-green;
+	background-color: $light-background;
+	width: 8vw;
+	border-radius: 50%;
+	text-decoration: none;
+	text-align: center;
+	outline: none;
+	font-size: 2vh;
+	line-height: 4vh;
+}
+
+.edit-button:hover {
+	background-color: $text-green;
+	color: $dark-background;
+	cursor: pointer;
+	transition: all 0.5s ease;
+}
+
+.delete-button {
+	color: $text-red;
+	border-color: $text-red;
+	background-color: $light-background;
+	width: 8vw;
+	border-radius: 50%;
+	text-decoration: none;
+	text-align: center;
+	outline: none;
+	font-size: 2vh;
+	line-height: 4vh;
+}
+
+.delete-button:hover {
+	background-color: $text-red;
+	color: $dark-background;
+	cursor: pointer;
+	transition: all 0.5s ease;
+}
+
+.edit-title {
+	padding-top: 3vh;
+	margin-bottom: 2vh;
+	font-size: 5vw;
+}
+
+.create-form {
+	height: 55vh;
+	width: 50vw;
+	margin-left: 15vw;
+	margin-top: 7vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	// align-items: center;
+}
+
+.create-form p {
+	padding-right: 10vw;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.create-form label {
+	color: $text-blue;
+	margin: 2vh 0 1vh 0;
+	font-size: 2.5vh;
+}
+
+#snipp-title {
+	padding: 0.5vh;
+	// width: 40vw;
+	border: 2px solid $text-orange;
+	color: $text-orange;
+	background-color: $highlight-background;
+	outline: none;
+	font-size: 2.5vh;
+}
+
+#lingo-field {
+	padding: 0.5vh;
+	color: $text-purple;
+	background-color: $highlight-background;
+	outline: none;
+	font-size: 2vh;
+	border-color: $text-purple;
+}
+
+#desc-field {
+	padding: 0.5vh;
+	// width: 40vw;
+	border: 2px solid $text-gray;
+	color: $text-gray;
+	background-color: $highlight-background;
+	outline: none;
+	font-size: 2.5vh;
+}
+
+.butts {
+	margin: 1vh 0 0 0;
+	padding-right: 10vw;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+.save-button {
+	color: $text-green;
+	border-color: $text-green;
+	background-color: $light-background;
+	width: 8vw;
+	border-radius: 50%;
+	text-decoration: none;
+	text-align: center;
+	outline: none;
+	font-size: 2vh;
+	line-height: 4vh;
+}
+
+.save-button:hover {
+	background-color: $text-green;
+	color: $dark-background;
+	cursor: pointer;
+	transition: all 0.5s ease;
+}
+
+.delete-title {
+	color: $text-red;
+	padding-top: 3vh;
+	font-size: 5vw;
+	padding-bottom: 3vh;
+}
+
+.del-snipp {
+	width: 80%;
+	margin-left: 10%;
+}
+
+.confirm {
+	color: $text-red;
+	width: 100%;
+	margin: 10vh 0 2vh 10%;
+}
+
+.logout-msg {
+	width: 100%;
+	font-size: 5vh;
+	padding-left: 6vw;
+	color: $text-gray;
+	text-align: center;
 }
